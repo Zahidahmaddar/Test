@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import "./Home.css";
 
 function Home({ setLogin }) {
   const navigate = useNavigate();
@@ -17,56 +18,18 @@ function Home({ setLogin }) {
 
   return (
     <div className="container">
-      <button
-        className="add-button"
-        style={{
-          padding: "6px 15px",
-          marginLeft: "5px",
-          backgroundColor: "orange",
-          border: "none",
-          borderRadius: "5px ",
-        }}
-        onClick={handleSubmit}
-      >
+      <button className="add-button" onClick={handleSubmit}>
         Add
       </button>
       {state.map((v, i) => {
         return (
           <div className="">
-            <input
-              type="text"
-              placeholder=""
-              style={{
-                padding: "6px 5px",
-                borderRadius: "5px",
-                border: "1px solid grey",
-              }}
-            />
-            <button
-              className="add-button"
-              style={{
-                padding: "6px 15px",
-                marginLeft: "5px",
-                backgroundColor: "orange",
-                border: "none",
-                borderRadius: "5px ",
-              }}
-              onClick={handleSubmit}
-            >
+            <input type="text" placeholder="" className="search-input" />
+            <button className="add-button" onClick={handleSubmit}>
               Add
             </button>
             {i !== 0 ? (
-              <button
-                className="add-button"
-                style={{
-                  padding: "6px 15px",
-                  marginLeft: "5px",
-                  backgroundColor: "orange",
-                  border: "none",
-                  borderRadius: "5px ",
-                }}
-                onClick={() => handleDelete(i)}
-              >
+              <button className="delete-button" onClick={() => handleDelete(i)}>
                 Delete
               </button>
             ) : null}
@@ -76,14 +39,7 @@ function Home({ setLogin }) {
 
       <div>
         <button
-          style={{
-            padding: "6px 15px",
-            marginLeft: "5px",
-            backgroundColor: "orange",
-            border: "none",
-            borderRadius: "5px ",
-            marginTop: "50px",
-          }}
+          className="log-out-button"
           onClick={() => {
             setLogin(false);
             localStorage.removeItem("user");

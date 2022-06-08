@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "../LoginForm/LoginForm.css";
 import Data from "../credentials.json";
-import { Navigate } from "react-router-dom";
 
 function LoginForm({ setLogin }) {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ function LoginForm({ setLogin }) {
   return (
     <div className="App">
       <div className="header">
-        <h1>Login aaaForm</h1>
+        <h1>Login Form</h1>
       </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <input
@@ -44,7 +43,7 @@ function LoginForm({ setLogin }) {
           }}
           onBlur={() => !username && setUsernameError(true)}
         />
-        {usernameError && <span>Field Required</span>}
+        {usernameError && <span className="input-error">Field Required</span>}
         <input
           type="text"
           placeholder="Password"
@@ -57,11 +56,15 @@ function LoginForm({ setLogin }) {
           }}
           onBlur={() => !password && setPasswordError(true)}
         />
-        {passwordError && <span>Field Required</span>}
+        {passwordError && <span className="input-error">Field Required</span>}
         <button className="login-button" disabled={!username || !password}>
           Log in
         </button>
-        {inavlidCredentials && <span>Username and password doesnt match</span>}
+        {inavlidCredentials && (
+          <span className="invalid-credentials">
+            Username and password doesn't match
+          </span>
+        )}
       </form>
     </div>
   );
